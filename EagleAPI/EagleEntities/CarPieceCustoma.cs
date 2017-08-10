@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EagleEntities
 {
-    public class Car_Piece_Customa
+    public class CarPieceCustoma
     {
         public int ID { get; set; }
 
@@ -16,9 +16,9 @@ namespace EagleEntities
 
         public double ValueToChange { get; set; }
 
-        public int ID_Customa { get; set; }
+        public int IDCustoma { get; set; }
 
-        public Car_Customa Car_Customa { get; set; }
+        public CarCustoma CarCustoma { get; set; }
 
     }
 }

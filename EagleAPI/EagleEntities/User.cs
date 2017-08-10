@@ -34,13 +34,13 @@ namespace EagleEntities
 
         public string Email { get; set; }
 
-        public int User_Type { get; set; }
+        public int UserType { get; set; }
 
-        public DateTime Reg_Date { get; set; }
+        public DateTime RegDate { get; set; }
 
-        public Driver_Gain Driver_Gain { get; set; }
+        public DriverGain DriverGain { get; set; }
 
-        public User_Type User_Type { get; set; }
+        public UserType UserType { get; set; }
         public List<Car> Cars { get; set; }
 
     }

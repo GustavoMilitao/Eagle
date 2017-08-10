@@ -41,19 +41,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Car.cs" />
-    <Compile Include="Car_Customa.cs" />
-    <Compile Include="Car_Piece_Customa.cs" />
-    <Compile Include="Credit_Card.cs" />
-    <Compile Include="Driver_Gain.cs" />
+    <Compile Include="CarCustoma.cs" />
+    <Compile Include="CarPieceCustoma.cs" />
+    <Compile Include="CreditCard.cs" />
+    <Compile Include="DriverGain.cs" />
     <Compile Include="Freight.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="Order_Payment.cs" />
-    <Compile Include="Payment_Method.cs" />
-    <Compile Include="Payment_Type.cs" />
+    <Compile Include="OrderPayment.cs" />
+    <Compile Include="PaymentMethod.cs" />
+    <Compile Include="PaymentType.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="User_Type.cs" />
+    <Compile Include="UserType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace EagleEntities
 {
-    public class Car_Customa
+    public class CarCustoma
     {
         public int ID { get; set; }
 
-        public int ID_Car { get; set; }
+        public int IDCar { get; set; }
 
-        public int ID_User { get; set; }
+        public int IDUser { get; set; }
 
-        public List<Car_Piece_Customa> Car_Pieces_Customa { get; set; }
+        public List<CarPieceCustoma> CarPiecesCustoma { get; set; }
 
         public Car Car { get; set; }
 

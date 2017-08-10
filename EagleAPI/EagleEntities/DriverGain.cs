@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace EagleEntities
 {
-    public class Driver_Gain
+    public class DriverGain
     {
         public int ID { get; set; }
 
-        public int ID_User_Driver { get; set; }
+        public int IDUserDriver { get; set; }
 
-        public int ID_Car { get; set; }
+        public int IDCar { get; set; }
 
         public double NetGainPerKm { get; set; }
 
-        public DateTime Reg_Date { get; set; }
+        public DateTime RegDate { get; set; }
 
         public User User { get; set; }
 

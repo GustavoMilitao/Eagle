@@ -10,7 +10,7 @@ namespace EagleEntities
     {
         public int ID { get; set; }
 
-        public int ID_User_Distributor { get; set; }
+        public int IDUserDistributor { get; set; }
 
         public string Description { get; set; }
 
@@ -22,7 +22,7 @@ namespace EagleEntities
 
         public bool? Available { get; set; }
 
-        public DateTime Reg_Date { get; set; }
+        public DateTime RegDate { get; set; }
 
         public User Distributor { get; set; }
 

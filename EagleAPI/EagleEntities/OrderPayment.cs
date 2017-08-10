@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace EagleEntities
 {
-    public class Order_Payment
+    public class OrderPayment
     {
         public int ID { get; set; }
 
-        public int ID_Pay_Method { get; set; }
+        public int IDPayMethod { get; set; }
 
-        public int ID_Order { get; set; }
+        public int IDOrder { get; set; }
 
         public double Value { get; set; }
 
-        public Payment_Method Payment_Method { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
 
         public Order Order { get; set; }
 
-        public DateTime Reg_Date { get; set; }
+        public DateTime RegDate { get; set; }
 
     }
 }

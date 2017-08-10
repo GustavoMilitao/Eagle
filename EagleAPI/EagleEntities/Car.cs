@@ -10,9 +10,9 @@ namespace EagleEntities
     {
         public int ID { get; set; }
 
-        public int ID_Car_Model { get; set; }
+        public int IDCarModel { get; set; }
 
-        public int ID_User { get; set; }
+        public int IDUser { get; set; }
 
         public string Carmodel { get; set; }
 
@@ -24,7 +24,7 @@ namespace EagleEntities
 
         public double GasPricePerKm { get; set; }
 
-        public Car_Customa Customa { get; set; }
+        public CarCustoma Customa { get; set; }
 
         public User User { get; set; }
 

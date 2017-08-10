@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace EagleEntities
 {
-    public class User_Type
+
+    public class PaymentType
     {
         public int ID { get; set; }
 
-        public string Type { get; set; }
+        public string Description { get; set; }
 
     }
 }
