@@ -40,7 +40,7 @@ namespace EagleEntities
 
         public DriverGain DriverGain { get; set; }
 
-        public UserType UserType { get; set; }
+        public UserType Type { get; set; }
         public List<Car> Cars { get; set; }
 
     }

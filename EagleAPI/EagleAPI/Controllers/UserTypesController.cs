@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace EagleAPI.Controllers
 {
-    public class UserTypeTypesController : ApiController
+    public class UserTypesController : ApiController
     {
         private UserTypeBLL userTypeBLL;
 
