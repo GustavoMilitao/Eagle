@@ -23,10 +23,13 @@ namespace EagleDAL
 
         static string SQL_INSERIR = @"
 
-INSERT INTO dbo.UserType
-           (Type)
+INSERT INTO UserType
+           (Type,
+            RegDate)
+    OUTPUT INSERTED.ID
      VALUES
-           (@Type)
+           (@Type,
+            @RegDate)
 ";
 
         #endregion
@@ -67,7 +70,7 @@ INSERT INTO dbo.UserType
 
         static string DELETE_USER_BY_ID = @"
 
-            DELETE FROM UserTypes 
+            DELETE FROM UserType 
             WHERE ID = @ID
 ";
 
@@ -85,7 +88,7 @@ INSERT INTO dbo.UserType
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@Type", userType.Type, DbType.AnsiString);
-            parameters.Add("@Reg_Date", DateTime.Now, DbType.DateTime);
+            parameters.Add("@RegDate", DateTime.Now, DbType.DateTime);
 
             return (int) SqlMapper.ExecuteScalar(connection, SQL_INSERIR, parameters);
         }

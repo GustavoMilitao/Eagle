@@ -26,6 +26,7 @@ Name,
 KmToChange,
 ValueToChange,
 IDCustoma)
+OUTPUT INSERTED.ID
 VALUES(
 @Name,
 @KmToChange,
@@ -55,7 +56,7 @@ ID,
 Name,
 KmToChange,
 ValueToChange,
-IDCustoma,
+IDCustoma
 FROM CarPieceCustoma
 WHERE ID = @ID 
         ";
@@ -70,7 +71,7 @@ ID,
 Name,
 KmToChange,
 ValueToChange,
-IDCustoma,
+IDCustoma
 FROM CarPieceCustoma
 
 ";

@@ -29,6 +29,7 @@ Caryear,
 GasKmPerLiter,
 GasPrice,
 GasPricePerKm)
+OUTPUT INSERTED.ID
 VALUES(
 @IDCarModel,
 @IDUser,
@@ -67,7 +68,7 @@ Carmodel,
 Caryear,
 GasKmPerLiter,
 GasPrice,
-GasPricePerKm,
+GasPricePerKm
 FROM Car
 WHERE ID = @ID 
         ";
@@ -85,7 +86,7 @@ Carmodel,
 Caryear,
 GasKmPerLiter,
 GasPrice,
-GasPricePerKm,
+GasPricePerKm
 FROM Car
 
 ";

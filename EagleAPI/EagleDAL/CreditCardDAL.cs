@@ -28,6 +28,7 @@ CardNumber,
 ValidTru,
 CVV,
 RegDate)
+OUTPUT INSERTED.ID
 VALUES(
 @IDPaymentMethod,
 @NameInCard,
@@ -63,7 +64,7 @@ NameInCard,
 CardNumber,
 ValidTru,
 CVV,
-RegDate,
+RegDate
 FROM CreditCard
 WHERE ID = @ID 
         ";
@@ -80,7 +81,7 @@ NameInCard,
 CardNumber,
 ValidTru,
 CVV,
-RegDate,
+RegDate
 FROM CreditCard
 
 ";

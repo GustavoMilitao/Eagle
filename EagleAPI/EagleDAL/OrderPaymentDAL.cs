@@ -26,6 +26,7 @@ IDPayMethod,
 IDOrder,
 Value,
 RegDate)
+OUTPUT INSERTED.ID
 VALUES(
 @IDPayMethod,
 @IDOrder,
@@ -55,7 +56,7 @@ ID,
 IDPayMethod,
 IDOrder,
 Value,
-RegDate,
+RegDate
 FROM OrderPayment
 WHERE ID = @ID 
         ";
@@ -70,7 +71,7 @@ ID,
 IDPayMethod,
 IDOrder,
 Value,
-RegDate,
+RegDate
 FROM OrderPayment
 
 ";

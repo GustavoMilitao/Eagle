@@ -29,6 +29,7 @@ Returnable,
 SinglePrice,
 Available,
 RegDate)
+OUTPUT INSERTED.ID
 VALUES(
 @IDUserDistributor,
 @Description,
@@ -67,7 +68,7 @@ Name,
 Returnable,
 SinglePrice,
 Available,
-RegDate,
+RegDate
 FROM Product
 WHERE ID = @ID 
         ";
@@ -85,7 +86,7 @@ Name,
 Returnable,
 SinglePrice,
 Available,
-RegDate,
+RegDate
 FROM Product
 
 ";

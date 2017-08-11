@@ -36,7 +36,7 @@ INSERT INTO Users
            ,Nickname
            ,Password
            ,Email
-           ,Reg_Date)
+           ,RegDate)
      OUTPUT INSERTED.ID
      VALUES
            (@Name
@@ -51,7 +51,7 @@ INSERT INTO Users
            ,@Nickname
            ,CONVERT(BINARY, @Password)
            ,@Email
-           ,@Reg_Date)
+           ,@RegDate)
 ";
 
         #endregion
@@ -96,7 +96,7 @@ INSERT INTO Users
            ,Nickname
            ,ISNULL(CONVERT(VARCHAR,Password),'') Password
            ,Email
-           ,Reg_Date
+           ,RegDate
         FROM Users
         WHERE ID = @ID
         ";
@@ -120,7 +120,7 @@ INSERT INTO Users
            ,Nickname
            ,ISNULL(CONVERT(VARCHAR,Password),'') Password
            ,Email
-           ,Reg_Date
+           ,RegDate
         FROM Users
         WHERE Name LIKE @Name OR Nickname LIKE @Nickname
         ";
@@ -144,7 +144,7 @@ INSERT INTO Users
            ,Nickname
            ,ISNULL(CONVERT(VARCHAR,Password),'') Password
            ,Email
-           ,Reg_Date
+           ,RegDate
         FROM Users
 ";
 
@@ -183,7 +183,7 @@ INSERT INTO Users
             parameters.Add("@Nickname", user.Nickname, DbType.AnsiString);
             parameters.Add("@Password", user.Password, DbType.AnsiStringFixedLength);
             parameters.Add("@Email", user.Email, DbType.AnsiString);
-            parameters.Add("@Reg_Date", DateTime.Now, DbType.DateTime);
+            parameters.Add("@RegDate", DateTime.Now, DbType.DateTime);
 
             return (int) SqlMapper.ExecuteScalar(connection, SQL_INSERIR, parameters);
         }

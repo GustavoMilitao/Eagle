@@ -26,6 +26,7 @@ IDUserDriver,
 IDCar,
 NetGainPerKm,
 RegDate)
+OUTPUT INSERTED.ID
 VALUES(
 @IDUserDriver,
 @IDCar,
@@ -54,7 +55,7 @@ ID,
 IDUserDriver,
 IDCar,
 NetGainPerKm,
-RegDate,
+RegDate
 FROM DriverGain
 WHERE ID = @ID 
         ";
@@ -69,7 +70,7 @@ ID,
 IDUserDriver,
 IDCar,
 NetGainPerKm,
-RegDate,
+RegDate
 FROM DriverGain
 
 ";

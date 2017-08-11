@@ -21,12 +21,13 @@ namespace EagleDAL
 
         #region SQL_INSERIR
 
-        static string SQL_INSERIR = @"INSERT INTO Order(
+        static string SQL_INSERIR = @"INSERT INTO Orders(
 IDUser,
 IDDistributor,
 IDDriver,
 TotalPrice,
 RegDate)
+OUTPUT INSERTED.ID
 VALUES(
 @IDUser,
 @IDDistributor,
@@ -39,7 +40,7 @@ VALUES(
 
         #region SQL UPDATE
 
-        static string SQL_UPDATE = @"UPDATE Order SET 
+        static string SQL_UPDATE = @"UPDATE Orders SET 
 IDUser = @IDUser,
 IDDistributor = @IDDistributor,
 IDDriver = @IDDriver,
@@ -59,8 +60,8 @@ IDUser,
 IDDistributor,
 IDDriver,
 TotalPrice,
-RegDate,
-FROM Order
+RegDate
+FROM Orders
 WHERE ID = @ID 
         ";
 
@@ -68,23 +69,21 @@ WHERE ID = @ID
 
         #region GET USERS
 
-        static string SQL_GET_USERS = @"
-            SELECT 
+        static string SQL_GET_USERS = @"SELECT 
 ID,
 IDUser,
 IDDistributor,
 IDDriver,
 TotalPrice,
-RegDate,
-FROM Order
-
+RegDate
+FROM Orders
 ";
 
         #endregion
 
         #region DELETE USER BY ID
 
-        static string DELETE_USER_BY_ID = @"DELETE FROM Order
+        static string DELETE_USER_BY_ID = @"DELETE FROM Orders
 WHERE ID = @ID
 ";
 

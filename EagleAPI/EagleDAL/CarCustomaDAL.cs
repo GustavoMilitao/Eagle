@@ -25,6 +25,7 @@ namespace EagleDAL
 IDCar,
 IDUser,
 TotalCustomaValuePerKm)
+OUTPUT INSERTED.ID
 VALUES(
 @IDCar,
 @IDUser,
@@ -51,7 +52,7 @@ WHERE ID = @ID
 ID,
 IDCar,
 IDUser,
-TotalCustomaValuePerKm,
+TotalCustomaValuePerKm
 FROM CarCustoma
 WHERE ID = @ID 
         ";
@@ -65,7 +66,7 @@ WHERE ID = @ID
 ID,
 IDCar,
 IDUser,
-TotalCustomaValuePerKm,
+TotalCustomaValuePerKm
 FROM CarCustoma
 
 ";

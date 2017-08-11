@@ -26,6 +26,7 @@ ID_User,
 ID_Pay_Type,
 Active,
 Reg_Date)
+OUTPUT INSERTED.ID
 VALUES(
 @ID_User,
 @ID_Pay_Type,
@@ -55,7 +56,7 @@ ID,
 ID_User,
 ID_Pay_Type,
 Active,
-Reg_Date,
+Reg_Date
 FROM PaymentMethod
 WHERE ID = @ID 
         ";
@@ -70,7 +71,7 @@ ID,
 ID_User,
 ID_Pay_Type,
 Active,
-Reg_Date,
+Reg_Date
 FROM PaymentMethod
 
 ";

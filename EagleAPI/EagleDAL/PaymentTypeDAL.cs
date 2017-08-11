@@ -23,6 +23,7 @@ namespace EagleDAL
 
         static string SQL_INSERIR = @"INSERT INTO PaymentType(
 Description)
+OUTPUT INSERTED.ID
 VALUES(
 @Description)
 ";
@@ -43,7 +44,7 @@ WHERE ID = @ID
 
         static string SQL_GET_USER_BY_ID = @"SELECT 
 ID,
-Description,
+Description
 FROM PaymentType
 WHERE ID = @ID 
         ";
@@ -55,7 +56,7 @@ WHERE ID = @ID
         static string SQL_GET_USERS = @"
             SELECT 
 ID,
-Description,
+Description
 FROM PaymentType
 
 ";

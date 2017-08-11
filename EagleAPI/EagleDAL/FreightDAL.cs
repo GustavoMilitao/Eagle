@@ -29,6 +29,7 @@ IDDriverGain,
 TotalFreightCostPerKm,
 TotalFreight,
 RegDate)
+OUTPUT INSERTED.ID
 VALUES(
 @IDUserDriver,
 @IDCar,
@@ -67,7 +68,7 @@ IDCarCustoma,
 IDDriverGain,
 TotalFreightCostPerKm,
 TotalFreight,
-RegDate,
+RegDate
 FROM Freight
 WHERE ID = @ID 
         ";
@@ -85,7 +86,7 @@ IDCarCustoma,
 IDDriverGain,
 TotalFreightCostPerKm,
 TotalFreight,
-RegDate,
+RegDate
 FROM Freight
 
 ";
