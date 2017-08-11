@@ -1,4 +1,4 @@
-﻿using Dapper;
+using Dapper;
 using EagleEntities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace EagleDAL
 {
-    public class UserDAL
+    public class ProductDAL
     {
         static string connectionString;
         static SqlConnection connection;
@@ -21,40 +21,37 @@ namespace EagleDAL
 
         #region SQL_INSERIR
 
-        static string SQL_INSERIR = @"
-
-INSERT INTO dbo.Product
-           (IDUserDistributor
-           ,Description
-           ,Name
-           ,Returnable
-           ,SinglePrice
-           ,Available
-           ,RegDate)
-     VALUES
-           (@IDUserDistributor
-           ,@Description
-           ,@Name
-           ,@Returnable
-           ,@SinglePrice
-           ,@Available
-           ,@RegDate)
+        static string SQL_INSERIR = @"INSERT INTO Product(
+IDUserDistributor,
+Description,
+Name,
+Returnable,
+SinglePrice,
+Available,
+RegDate)
+VALUES(
+@IDUserDistributor,
+@Description,
+@Name,
+@Returnable,
+@SinglePrice,
+@Available,
+@RegDate)
 ";
 
         #endregion
 
         #region SQL UPDATE
 
-        static string SQL_UPDATE = @"
-            UPDATE dbo.Product
-           SET IDUserDistributor = @IDUserDistributor>
-              ,Description = @Description
-              ,Name = @Name
-              ,Returnable = @Returnable
-              ,SinglePrice = @SinglePrice 
-              ,Available = @Available
-              ,RegDate = @RegDate
-         WHERE ID = @ID
+        static string SQL_UPDATE = @"UPDATE Product SET 
+IDUserDistributor = @IDUserDistributor,
+Description = @Description,
+Name = @Name,
+Returnable = @Returnable,
+SinglePrice = @SinglePrice,
+Available = @Available,
+
+WHERE ID = @ID
 ";
 
 
@@ -62,65 +59,17 @@ INSERT INTO dbo.Product
 
         #region SQL GET USER BY ID
 
-        static string SQL_GET_USER_BY_ID = @"
-  SELECT ID
-      ,IDUserDistributor
-      ,Description
-      ,Name
-      ,Returnable
-      ,SinglePrice
-      ,Available
-      ,RegDate
-  FROM Product
-  WHERE ID = @ID
-        ";
-
-        #endregion
-
-        #region GET USER BY PARTIAL NAME
-
-        static string SQL_GET_USER_BY_PARTIAL_NAME = @"
-        SELECT
-            ID
-           ,Name
-           ,Address
-           ,City
-           ,State
-           ,Addresscode
-           ,Country
-           ,DDI
-           ,DDD
-           ,Phonenumber
-           ,Nickname
-           ,ISNULL(CONVERT(VARCHAR,Password),'') Password
-           ,Email
-           ,Reg_Date
-        FROM Users
-        WHERE Name LIKE @Name OR Nickname LIKE @Nickname
-        ";
-
-        #endregion
-
-        #region GET USER BY PARTIAL NICKNAME
-
-        static string SQL_GET_USER_BY_PARTIAL_NICKNAME = @"
-        SELECT
-            ID
-           ,Name
-           ,Address
-           ,City
-           ,State
-           ,Addresscode
-           ,Country
-           ,DDI
-           ,DDD
-           ,Phonenumber
-           ,Nickname
-           ,ISNULL(CONVERT(VARCHAR,Password),'') Password
-           ,Email
-           ,Reg_Date
-        FROM Users
-        WHERE Nickname LIKE @Nickname
+        static string SQL_GET_USER_BY_ID = @"SELECT 
+ID,
+IDUserDistributor,
+Description,
+Name,
+Returnable,
+SinglePrice,
+Available,
+RegDate,
+FROM Product
+WHERE ID = @ID 
         ";
 
         #endregion
@@ -128,109 +77,86 @@ INSERT INTO dbo.Product
         #region GET USERS
 
         static string SQL_GET_USERS = @"
-            SELECT
-            ID
-           ,Name
-           ,Address
-           ,City
-           ,State
-           ,Addresscode
-           ,Country
-           ,DDI
-           ,DDD
-           ,Phonenumber
-           ,Nickname
-           ,ISNULL(CONVERT(VARCHAR,Password),'') Password
-           ,Email
-           ,Reg_Date
-        FROM Users
+            SELECT 
+ID,
+IDUserDistributor,
+Description,
+Name,
+Returnable,
+SinglePrice,
+Available,
+RegDate,
+FROM Product
+
 ";
 
         #endregion
 
         #region DELETE USER BY ID
 
-        static string DELETE_USER_BY_ID = @"
-
-            DELETE FROM Users 
-            WHERE ID = @ID
+        static string DELETE_USER_BY_ID = @"DELETE FROM Product
+WHERE ID = @ID
 ";
 
         #endregion
 
         #endregion
-        public UserDAL()
+        public ProductDAL()
         {
             connectionString = ConfigurationManager.AppSettings["connectionStringSilver"];
             connection = new SqlConnection(connectionString);
             connection.Open();
         }
 
-        public int InsertUser(User user)
+        public int InsertProduct(Product product)
         {
             DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Name", user.Name, DbType.AnsiString);
-            parameters.Add("@Address", user.Address, DbType.AnsiString);
-            parameters.Add("@City", user.City, DbType.AnsiString);
-            parameters.Add("@State", user.State, DbType.AnsiString);
-            parameters.Add("@Addresscode", user.Addresscode, DbType.AnsiString);
-            parameters.Add("@Country", user.Country, DbType.AnsiString);
-            parameters.Add("@DDI", user.DDI, DbType.AnsiString);
-            parameters.Add("@DDD", user.DDD, DbType.AnsiString);
-            parameters.Add("@Phonenumber", user.Phonenumber, DbType.AnsiString);
-            parameters.Add("@Nickname", user.Nickname, DbType.AnsiString);
-            parameters.Add("@Password", user.Password, DbType.AnsiStringFixedLength);
-            parameters.Add("@Email", user.Email, DbType.AnsiString);
-            parameters.Add("@Reg_Date", DateTime.Now, DbType.DateTime);
+            parameters.Add("@ID", product.ID);
+            parameters.Add("@IDUserDistributor", product.IDUserDistributor);
+            parameters.Add("@Description", product.Description);
+            parameters.Add("@Name", product.Name);
+            parameters.Add("@Returnable", product.Returnable);
+            parameters.Add("@SinglePrice", product.SinglePrice);
+            parameters.Add("@Available", product.Available);
+            parameters.Add("@RegDate", product.RegDate);
 
-            return (int) SqlMapper.ExecuteScalar(connection, SQL_INSERIR, parameters);
+
+            return (int)SqlMapper.ExecuteScalar(connection, SQL_INSERIR, parameters);
         }
 
-        public bool UpdateUser(User user)
+        public bool UpdateProduct(Product product)
         {
             DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Name", user.Name, DbType.AnsiString);
-            parameters.Add("@Address", user.Address, DbType.AnsiString);
-            parameters.Add("@City", user.City, DbType.AnsiString);
-            parameters.Add("@State", user.State, DbType.AnsiString);
-            parameters.Add("@Addresscode", user.Addresscode, DbType.AnsiString);
-            parameters.Add("@Country", user.Country, DbType.AnsiString);
-            parameters.Add("@DDI", user.DDI, DbType.AnsiString);
-            parameters.Add("@DDD", user.DDD, DbType.AnsiString);
-            parameters.Add("@Phonenumber", user.Phonenumber, DbType.AnsiString);
-            parameters.Add("@Nickname", user.Nickname, DbType.AnsiString);
-            parameters.Add("@Password", user.Password, DbType.AnsiStringFixedLength);
-            parameters.Add("@Email", user.Email, DbType.AnsiString);
-            parameters.Add("@ID", user.ID, DbType.Int32);
+            parameters.Add("@ID", product.ID);
+            parameters.Add("@IDUserDistributor", product.IDUserDistributor);
+            parameters.Add("@Description", product.Description);
+            parameters.Add("@Name", product.Name);
+            parameters.Add("@Returnable", product.Returnable);
+            parameters.Add("@SinglePrice", product.SinglePrice);
+            parameters.Add("@Available", product.Available);
+
 
             return SqlMapper.Execute(connection, SQL_UPDATE, parameters) > 0;
         }
 
-        public User getUserByID(int id)
+        public Product getProductByID(int id)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@ID", id, DbType.Int32);
-            return SqlMapper.Query<User>(connection, SQL_GET_USER_BY_ID, parameters).FirstOrDefault();
+            return SqlMapper.Query<Product>(connection, SQL_GET_USER_BY_ID, parameters).FirstOrDefault();
         }
 
-        public bool DeleteUserByID(int id)
+        public bool DeleteProductByID(int id)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@ID", id, DbType.Int32);
             return SqlMapper.Execute(connection, DELETE_USER_BY_ID, parameters) > 0;
         }
 
-        public List<User> ListUsersByPartialName(string partialName)
+        public List<Product> ListProducts()
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Name", "%" + partialName + "%", DbType.AnsiString);
-            parameters.Add("@Nickname", "%" + partialName + "%", DbType.AnsiString);
-            return SqlMapper.Query<User>(connection, SQL_GET_USER_BY_PARTIAL_NAME, parameters).ToList();
-        }
-
-        public List<User> ListUsers()
-        {
-            return SqlMapper.Query<User>(connection, SQL_GET_USERS).ToList();
+            return SqlMapper.Query<Product>(connection, SQL_GET_USERS).ToList();
         }
     }
 }
+

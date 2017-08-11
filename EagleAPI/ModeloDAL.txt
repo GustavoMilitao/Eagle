@@ -1,0 +1,102 @@
+using Dapper;
+using EagleEntities;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EagleDAL
+{
+    public class {5}DAL
+    {
+        static string connectionString;
+        static SqlConnection connection;
+
+
+        #region SQL
+
+        #region SQL_INSERIR
+
+        static string SQL_INSERIR = @"{0}
+";
+
+        #endregion
+
+        #region SQL UPDATE
+
+        static string SQL_UPDATE = @"{1}
+";
+
+
+        #endregion
+
+        #region SQL GET USER BY ID
+
+        static string SQL_GET_USER_BY_ID = @"{2}
+        ";
+
+        #endregion
+
+        #region GET USERS
+
+        static string SQL_GET_USERS = @"
+            {3}
+";
+
+        #endregion
+
+        #region DELETE USER BY ID
+
+        static string DELETE_USER_BY_ID = @"{4}
+";
+
+        #endregion
+
+        #endregion
+        public {5}DAL()
+        {
+            connectionString = ConfigurationManager.AppSettings["connectionStringSilver"];
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+        }
+
+        public int Insert{5}({5} {6})
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            {7}
+
+            return (int) SqlMapper.ExecuteScalar(connection, SQL_INSERIR, parameters);
+        }
+
+        public bool Update{5}({5} {6})
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            {7}
+
+            return SqlMapper.Execute(connection, SQL_UPDATE, parameters) > 0;
+        }
+
+        public {5} get{5}ByID(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@ID", id, DbType.Int32);
+            return SqlMapper.Query<{5}>(connection, SQL_GET_USER_BY_ID, parameters).FirstOrDefault();
+        }
+
+        public bool Delete{5}ByID(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@ID", id, DbType.Int32);
+            return SqlMapper.Execute(connection, DELETE_USER_BY_ID, parameters) > 0;
+        }
+
+        public List<{5}> List{5}s()
+        {
+            return SqlMapper.Query<{5}>(connection, SQL_GET_USERS).ToList();
+        }
+    }
+}

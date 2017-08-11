@@ -127,30 +127,6 @@ INSERT INTO Users
 
         #endregion
 
-        #region GET USER BY PARTIAL NICKNAME
-
-        static string SQL_GET_USER_BY_PARTIAL_NICKNAME = @"
-        SELECT
-            ID
-           ,Name
-           ,Address
-           ,City
-           ,State
-           ,Addresscode
-           ,Country
-           ,DDI
-           ,DDD
-           ,Phonenumber
-           ,Nickname
-           ,ISNULL(CONVERT(VARCHAR,Password),'') Password
-           ,Email
-           ,Reg_Date
-        FROM Users
-        WHERE Nickname LIKE @Nickname
-        ";
-
-        #endregion
-
         #region GET USERS
 
         static string SQL_GET_USERS = @"

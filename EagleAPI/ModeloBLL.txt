@@ -1,0 +1,50 @@
+using EagleEntities;
+using EagleDAL;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EagleBLL
+{
+    public class {0}BLL
+    {
+        private {0}DAL {1}DAL;
+
+        public {0}DAL {0}DAL
+        {
+            get
+            {
+                if ({1}DAL == null)
+                    {1}DAL = new {0}DAL();
+                return {1}DAL;
+            }
+        }
+
+        public int Insert{0}({0} {1})
+        {
+            return {0}DAL.Insert{0}({1});
+        }
+
+        public bool Update{0}({0} {1})
+        {
+            return {0}DAL.Update{0}({1});
+        }
+
+        public {0} get{0}ByID(int id)
+        {
+            return {0}DAL.get{0}ByID(id);
+        }
+
+        public bool Delete{0}ByID(int id)
+        {
+            return {0}DAL.Delete{0}ByID(id);
+        }
+
+        public List<{0}> List{0}s()
+        {
+            return {0}DAL.List{0}s();
+        }
+    }
+}
