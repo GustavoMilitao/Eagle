@@ -14,15 +14,7 @@ namespace EagleEntities
 
         public int IDUser { get; set; }
 
-        public string Carmodel { get; set; }
-
-        public int Caryear { get; set; }
-
-        public double GasKmPerLiter { get; set; }
-
-        public double GasPrice { get; set; }
-
-        public double GasPricePerKm { get; set; }
+        public CarModel CarModel { get; set; }
 
         public CarCustoma Customa { get; set; }
 

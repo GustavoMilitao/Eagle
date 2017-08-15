@@ -40,9 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankingAccountBLL.cs" />
     <Compile Include="CarBLL.cs" />
     <Compile Include="CarCustomaBLL.cs" />
+    <Compile Include="CarModelBLL.cs" />
     <Compile Include="CarPieceCustomaBLL.cs" />
+    <Compile Include="ConsumptionCostBLL.cs" />
     <Compile Include="CreditCardBLL.cs" />
     <Compile Include="DriverGainBLL.cs" />
     <Compile Include="FreightBLL.cs" />

@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankingAccountDAL.cs" />
     <Compile Include="CarCustomaDAL.cs" />
     <Compile Include="CarDAL.cs" />
+    <Compile Include="CarModelDAL.cs" />
     <Compile Include="CarPieceCustomaDAL.cs" />
+    <Compile Include="ConsumptionCostDAL.cs" />
     <Compile Include="CreditCardDAL.cs" />
     <Compile Include="DriverGainDAL.cs" />
     <Compile Include="FreightDAL.cs" />

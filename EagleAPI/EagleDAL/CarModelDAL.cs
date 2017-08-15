@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace EagleDAL
 {
-    public class CarDAL
+    public class CarModelDAL
     {
         static string connectionString;
         static SqlConnection connection;
@@ -21,21 +21,30 @@ namespace EagleDAL
 
         #region SQL_INSERIR
 
-        static string SQL_INSERIR = @"INSERT INTO Car(
-IDCarModel,
-IDUser)
+        static string SQL_INSERIR = @"INSERT INTO CarModel(
+ModelName,
+Brand,
+Year,
+Potency,
+Flex)
 VALUES(
-@IDCarModel,
-@IDUser)
+@ModelName,
+@Brand,
+@Year,
+@Potency,
+Convert(BIT, ISNULL(@Flex, 0)))
 ";
 
         #endregion
 
         #region SQL UPDATE
 
-        static string SQL_UPDATE = @"UPDATE Car SET 
-IDCarModel = @IDCarModel,
-IDUser = @IDUser
+        static string SQL_UPDATE = @"UPDATE CarModel SET 
+ModelName = @ModelName,
+Brand = @Brand,
+Year = @Year,
+Potency = @Potency,
+Flex = Convert(BIT, ISNULL(@Flex, 0))
 WHERE ID = @ID
 ";
 
@@ -47,10 +56,11 @@ WHERE ID = @ID
         static string SQL_GET_USER_BY_ID = @"
 
 
-SELECT ID,
-       IDCarModel,
-       IDUser
-FROM Car
+
+
+
+SELECT ID,ModelName,Brand,Year,Potency,Flex
+FROM CarModel
 WHERE ID = @ID 
         ";
 
@@ -62,69 +72,76 @@ WHERE ID = @ID
             
 
 
-SELECT ID,
-       IDCarModel,
-       IDUser
-FROM Car
+
+
+
+SELECT ID,ModelName,Brand,Year,Potency,Flex
+FROM CarModel
 
 ";
 
         #endregion
 
-        #region DELETE CAR BY ID
+        #region DELETE USER BY ID
 
-        static string DELETE_USER_BY_ID = @"DELETE FROM Car
+        static string DELETE_USER_BY_ID = @"DELETE FROM CarModel
 WHERE ID = @ID
 ";
 
         #endregion
 
         #endregion
-        public CarDAL()
+        public CarModelDAL()
         {
             connectionString = ConfigurationManager.AppSettings["connectionStringSilver"];
             connection = new SqlConnection(connectionString);
             connection.Open();
         }
 
-        public int InsertCar(Car car)
+        public int InsertCarModel(CarModel carModel)
         {
             DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@IDCarModel", car.IDCarModel);
-            parameters.Add("@IDUser", car.IDUser);
+            parameters.Add("@ModelName", carModel.ModelName);
+            parameters.Add("@Brand", carModel.Brand);
+            parameters.Add("@Year", carModel.Year);
+            parameters.Add("@Potency", carModel.Potency);
+            parameters.Add("@Flex", carModel.Flex);
 
 
             return (int)SqlMapper.ExecuteScalar(connection, SQL_INSERIR, parameters);
         }
 
-        public bool UpdateCar(Car car)
+        public bool UpdateCarModel(CarModel carModel)
         {
             DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@ID", car.ID);
-            parameters.Add("@IDCarModel", car.IDCarModel);
-            parameters.Add("@IDUser", car.IDUser);
+            parameters.Add("@ID", carModel.ID);
+            parameters.Add("@ModelName", carModel.ModelName);
+            parameters.Add("@Brand", carModel.Brand);
+            parameters.Add("@Year", carModel.Year);
+            parameters.Add("@Potency", carModel.Potency);
+            parameters.Add("@Flex", carModel.Flex);
 
 
             return SqlMapper.Execute(connection, SQL_UPDATE, parameters) > 0;
         }
 
-        public Car getCarByID(int id)
+        public CarModel getCarModelByID(int id)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@ID", id, DbType.Int32);
-            return SqlMapper.Query<Car>(connection, SQL_GET_USER_BY_ID, parameters).FirstOrDefault();
+            return SqlMapper.Query<CarModel>(connection, SQL_GET_USER_BY_ID, parameters).FirstOrDefault();
         }
 
-        public bool DeleteCarByID(int id)
+        public bool DeleteCarModelByID(int id)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@ID", id, DbType.Int32);
             return SqlMapper.Execute(connection, DELETE_USER_BY_ID, parameters) > 0;
         }
 
-        public List<Car> ListCars()
+        public List<CarModel> ListCarModels()
         {
-            return SqlMapper.Query<Car>(connection, SQL_GET_USERS).ToList();
+            return SqlMapper.Query<CarModel>(connection, SQL_GET_USERS).ToList();
         }
     }
 }

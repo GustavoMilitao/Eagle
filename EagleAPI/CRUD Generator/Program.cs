@@ -178,9 +178,9 @@ SELECT @@@SQL
                 Directory.CreateDirectory("Controllers");
 
             DirectoryInfo pathwithentities = new DirectoryInfo(@"C:\Users\Kaioso\Source\Repos\EagleAPI\EagleAPI\EagleEntities");
-            foreach(FileInfo f in pathwithentities.EnumerateFiles().Where(a => a.Extension == ".cs").ToList())
+            foreach (FileInfo f in pathwithentities.EnumerateFiles().Where(a => a.Extension == ".cs").ToList())
             {
-                string filename = f.Name.Replace(".cs","");
+                string filename = f.Name.Replace(".cs", "");
                 string uncapitalizename = Char.ToLowerInvariant(filename[0]) + filename.Substring(1);
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@@tabela", filename, DbType.AnsiString);
@@ -199,17 +199,17 @@ SELECT @@@SQL
 
                 StringBuilder sb = new StringBuilder();
                 Car a = new Car();
-                Type t = Type.GetType("EagleEntities."+filename);
-                
+                Type t = Type.GetType("EagleEntities." + filename);
+
                 var l = t.GetProperties();
-                foreach(var c in l)
+                foreach (var c in l)
                 {
-                    sb.AppendLine(param.Replace("{metadata}", '"'+ "@" + c.Name+ '"').Replace("{data}", uncapitalizename + "." + c.Name));
+                    sb.AppendLine(param.Replace("{metadata}", '"' + "@" + c.Name + '"').Replace("{data}", uncapitalizename + "." + c.Name));
                 }
 
 
 
-                StreamWriter sw = new StreamWriter(@"DAL\"+filename+"DAL.cs");
+                StreamWriter sw = new StreamWriter(@"DAL\" + filename + "DAL.cs");
                 DAL = DAL.Replace("{0}", insert);
                 DAL = DAL.Replace("{1}", update);
                 DAL = DAL.Replace("{2}", select);
@@ -221,7 +221,7 @@ SELECT @@@SQL
                 sw.WriteLine(DAL);
                 //var teste = String.Format(DAL, insert, update, select, selectall, delete, filename, uncapitalizename);
                 sw.Close();
-                sw = new StreamWriter(@"BLL\"+filename + "BLL.cs");
+                sw = new StreamWriter(@"BLL\" + filename + "BLL.cs");
                 BLL = BLL.Replace("{0}", filename);
                 BLL = BLL.Replace("{1}", uncapitalizename);
                 sw.WriteLine(BLL);
