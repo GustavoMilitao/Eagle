@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace EagleAPI
+namespace EagleUI.Interface
 {
     public class RouteConfig
     {
@@ -14,9 +14,9 @@ namespace EagleAPI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Route",
-                url: "api/{controller}/{action}/{id}",
-                defaults: new { controller = "Default", id = UrlParameter.Optional }
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

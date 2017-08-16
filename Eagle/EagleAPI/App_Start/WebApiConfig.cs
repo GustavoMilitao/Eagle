@@ -20,7 +20,7 @@ namespace EagleAPI
 
             config.Routes.MapHttpRoute(
                 name: "APIRoute",
-                routeTemplate: "{controller}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { controller = "Default", id = RouteParameter.Optional }
             );
         }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EagleAPI", "EagleAPI\EagleAPI.csproj", "{93B27642-3FB9-4D70-B565-841B0617DADC}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EagleUI.Android", "EagleUI\EagleUI.Android\EagleUI.Android.csproj", "{21B0DA73-4F37-48F4-A561-C7ABE90F0A89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EagleUI.iOS", "EagleUI\EagleUI.iOS\EagleUI.iOS.csproj", "{EF076DD5-F59A-40F7-A5FD-F81821905F9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EagleUI.Interface", "EagleUI.Interface\EagleUI.Interface.csproj", "{0468B33E-3F34-4027-BC41-B81B7CB0AD72}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -133,6 +135,18 @@ Global
 		{EF076DD5-F59A-40F7-A5FD-F81821905F9F}.Release|iPhone.Build.0 = Release|iPhone
 		{EF076DD5-F59A-40F7-A5FD-F81821905F9F}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{EF076DD5-F59A-40F7-A5FD-F81821905F9F}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Release|iPhone.Build.0 = Release|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{0468B33E-3F34-4027-BC41-B81B7CB0AD72}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
