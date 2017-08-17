@@ -90,12 +90,12 @@ textarea {
 
 @media(max-width:768px) {
     .login-dp {
-        background-color: inherit;
-        color: #fff;
+        border-radius: 20px;
+        background-color: rgba(255,255,255,.8);
     }
 
         .login-dp .bottom {
-            background-color: inherit;
+            background-color: rgba(255,255,255,.8);
             border-top: 0 none;
         }
 }
@@ -103,7 +103,7 @@ textarea {
 
 .col-centered {
     float: none;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 
