@@ -1,7 +1,37 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
+﻿<div class="row">
+    <div class="col-md-3 col-centered">
+        <div class="login-dp">
+            <div class="col-md-12 espacado">
+                <h4>Login via</h4>
+                <div class="social-buttons">
+                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                </div>
+                <h4>or</h4>
+                <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputPassword2">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                        <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox">
+                        </label>
+                        <h5>Keep me logged-in</h5>
+                    </div>
+                </form>
+            </div>
+            <div class="bottom text-center">
+                <h5>New here ? <a href="#"><b>Join Us</b></a></h5>
+            </div>
+        </div>
+    </div>
+</div>

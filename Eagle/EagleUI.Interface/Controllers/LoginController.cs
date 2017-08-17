@@ -1,19 +1,24 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Web;
 using System.Web.Mvc;
-
 
 namespace EagleUI.Interface.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
-        public ActionResult Get()
+        [HttpGet()]
+        public ActionResult Index()
         {
+            return View();
+        }
+
+        [HttpPost()]
+        public ActionResult Index(string user, string senha)
+        {
+            ViewBag.Message = "Your application description page.";
+
             return View();
         }
     }
