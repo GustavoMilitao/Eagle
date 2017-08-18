@@ -40,8 +40,10 @@ textarea {
 
 .login-dp {
     border-radius: 20px;
-    min-width: 250px;
+    min-width: 80%;
+    min-height: 80%;
     overflow: hidden;
+    position: absolute;
     background-color: rgba(255,255,255,.8);
 }
 
@@ -88,9 +90,25 @@ textarea {
         background-color: #59b5fa;
     }
 
+@media(max-width:480px) {
+    .login-dp {
+        border-radius: 20px;
+        min-width: 80% !important;
+        min-height: 80% !important;
+        background-color: rgba(255,255,255,.8);
+    }
+
+        .login-dp .bottom {
+            background-color: rgba(255,255,255,.8);
+            border-top: 0 none;
+        }
+}
+
 @media(max-width:768px) {
     .login-dp {
         border-radius: 20px;
+        min-width: 50% !important;
+        min-height: 50% !important;
         background-color: rgba(255,255,255,.8);
     }
 
@@ -102,8 +120,10 @@ textarea {
 
 
 .col-centered {
-    float: none;
-    margin: 0 auto
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
 }
 
 
