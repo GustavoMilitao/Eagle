@@ -42,7 +42,7 @@ textarea {
     min-width: 80%;
     min-height: 80%;
     overflow: hidden;
-    position: absolute;
+    position: relative !important;
     background-color: rgba(255,255,255,.8);
 }
 
@@ -89,11 +89,11 @@ textarea {
         background-color: #59b5fa;
     }
 
-@media(max-width:480px) {
+
+@media(min-width:400px) and (max-width:600px) {
     .login-dp {
-        border-radius: 20px;
-        min-width: 80% !important;
-        min-height: 80% !important;
+        width: 60% !important;
+        min-width: unset !important;
         background-color: rgba(255,255,255,.8);
     }
 
@@ -103,11 +103,10 @@ textarea {
         }
 }
 
-@media(max-width:768px) {
+@media(min-width:600px) and (max-width:767px) {
     .login-dp {
-        border-radius: 20px;
-        min-width: 50% !important;
-        min-height: 50% !important;
+        width: 40% !important;
+        min-width: unset !important;
         background-color: rgba(255,255,255,.8);
     }
 
@@ -118,11 +117,22 @@ textarea {
 }
 
 
-.col-centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -100px 0 0 -150px;
+@media(min-width:340px) and (max-width:399px) {
+    .login-dp {
+        width: 80% !important;
+        min-width: unset !important;
+        background-color: rgba(255,255,255,.8);
+    }
+
+        .login-dp .bottom {
+            background-color: rgba(255,255,255,.8);
+            border-top: 0 none;
+        }
+}
+
+.col-centered { 
+    margin: 5% auto !important;
+    float: none !important;
 }
 
 
