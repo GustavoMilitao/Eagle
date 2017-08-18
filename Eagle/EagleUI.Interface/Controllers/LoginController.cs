@@ -15,9 +15,9 @@ namespace EagleUI.Interface.Controllers
         }
 
         [HttpPost()]
-        public ActionResult Index(string user, string senha)
+        public ActionResult Index(string user, string senha, bool keepLogged)
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application description page."; 
 
             return View();
         }
