@@ -8,16 +8,30 @@ namespace EagleUI.Interface.Controllers
 {
     public class LoginController : Controller
     {
-        [HttpGet()]
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
-        [HttpPost()]
-        public ActionResult Index(string user, string senha, bool keepLogged)
+        [HttpPost]
+        public JsonResult Index(string user, string senha, bool keepLogged)
         {
-            ViewBag.Message = "Your application description page."; 
+            try
+            {
+                return Json(new { success = true, sessionID = Guid.NewGuid().ToString(), days = 9999 });
+            }
+            catch
+            {
+                return Json(new { success = false, message = "Errado" });
+            }
+        }
+
+        [HttpPost]
+        [Route("Recover")]
+        public ActionResult Recover(string sessionID)
+        {
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }

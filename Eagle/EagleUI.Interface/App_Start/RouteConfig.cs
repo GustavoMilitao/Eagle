@@ -18,6 +18,12 @@ namespace EagleUI.Interface
                 url: "{controller}/{id}",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Recover",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Login", action = "Recover", id = UrlParameter.Optional }
+            );
         }
     }
 }
