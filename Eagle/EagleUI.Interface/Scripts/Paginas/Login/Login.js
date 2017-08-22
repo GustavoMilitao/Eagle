@@ -16,11 +16,11 @@
 });
 
 
-$('#login-form').submit(function () {
+$('#login-form').submit(function (e) {
     $.ajax({
         type: 'POST',
         url: '/Login',
-        async: false,
+        async: false, 
         data: {
             user: $('#user').val(),
             senha: $('#password').val(),
@@ -39,6 +39,7 @@ $('#login-form').submit(function () {
             alert(data.message);
         }
     });
+    e.preventDefault();
 });
 
 

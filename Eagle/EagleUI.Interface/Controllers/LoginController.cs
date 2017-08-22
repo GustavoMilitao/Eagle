@@ -14,7 +14,7 @@ namespace EagleUI.Interface.Controllers
 
         [HttpGet]
         public ActionResult Index()
-        {
+        { 
             return View();
         }
 
