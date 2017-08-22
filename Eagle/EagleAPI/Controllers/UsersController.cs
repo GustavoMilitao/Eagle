@@ -53,6 +53,12 @@ namespace EagleAPI.Controllers
             return Json(UserBLL.ListUsersByPartialName(partialName),serializerSettings);
         }
 
+        public JsonResult<User> Get(string username, string password)
+        {
+            JsonSerializerSettings serializerSettings = new JsonSerializerSettings { Formatting = Formatting.Indented };
+            return Json(UserBLL.getUserByUserNameAndPassword(username, password), serializerSettings);
+        }
+
         // GET api/values/5
         public JsonResult<User> Get(int id)
         {

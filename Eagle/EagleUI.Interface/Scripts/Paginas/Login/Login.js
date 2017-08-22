@@ -2,7 +2,7 @@
     var cookie = getCookie('IDrinkSessionID');
     if (cookie && cookie != "") {
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: '/Login/Recover',
             async: false,
             data: {
@@ -31,7 +31,12 @@ $('#login-form').submit(function () {
                 setCookie("IDrinkSessionID", data.sessionID, data.days);
                 // Store cookie
                 //Redirect to page
+            } else {
+                alert(data.message);
             }
+        },
+        error: function (data){
+            alert(data.message);
         }
     });
 });

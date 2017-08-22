@@ -36,6 +36,7 @@ INSERT INTO Users
            ,Nickname
            ,Password
            ,Email
+           ,UserType
            ,RegDate)
      OUTPUT INSERTED.ID
      VALUES
@@ -51,6 +52,7 @@ INSERT INTO Users
            ,@Nickname
            ,CONVERT(BINARY, @Password)
            ,@Email
+           ,@UserType
            ,@RegDate)
 ";
 
@@ -94,11 +96,34 @@ INSERT INTO Users
            ,DDD
            ,Phonenumber
            ,Nickname
-           ,ISNULL(CONVERT(VARCHAR,Password),'') Password
+           ,LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR,Password),''))) Password
            ,Email
+           ,UserType
            ,RegDate
         FROM Users
         WHERE ID = @ID
+        ";
+
+        static string SQL_GET_USER_BY_USERNAME_AND_PASSWORD = @"
+        SELECT
+            ID
+           ,Name
+           ,Address
+           ,City
+           ,State
+           ,Addresscode
+           ,Country
+           ,DDI
+           ,DDD
+           ,Phonenumber
+           ,Nickname
+           ,LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR,Password),''))) Password
+           ,Email
+           ,UserType
+           ,RegDate
+        FROM Users
+        WHERE (Nickname = @Username OR Email = @Username) AND 
+                LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR,Password),''))) = @Password
         ";
 
         #endregion
@@ -118,8 +143,9 @@ INSERT INTO Users
            ,DDD
            ,Phonenumber
            ,Nickname
-           ,ISNULL(CONVERT(VARCHAR,Password),'') Password
+           ,LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR,Password),''))) Password
            ,Email
+           ,UserType
            ,RegDate
         FROM Users
         WHERE Name LIKE @Name OR Nickname LIKE @Nickname
@@ -142,8 +168,9 @@ INSERT INTO Users
            ,DDD
            ,Phonenumber
            ,Nickname
-           ,ISNULL(CONVERT(VARCHAR,Password),'') Password
+           ,LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR,Password),''))) Password
            ,Email
+           ,UserType
            ,RegDate
         FROM Users
 ";
@@ -183,6 +210,7 @@ INSERT INTO Users
             parameters.Add("@Nickname", user.Nickname, DbType.AnsiString);
             parameters.Add("@Password", user.Password, DbType.AnsiStringFixedLength);
             parameters.Add("@Email", user.Email, DbType.AnsiString);
+            parameters.Add("@UserType", user.UserType, DbType.Int32);
             parameters.Add("@RegDate", DateTime.Now, DbType.DateTime);
 
             return (int) SqlMapper.ExecuteScalar(connection, SQL_INSERIR, parameters);
@@ -213,6 +241,14 @@ INSERT INTO Users
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@ID", id, DbType.Int32);
             return SqlMapper.Query<User>(connection, SQL_GET_USER_BY_ID, parameters).FirstOrDefault();
+        }
+
+        public User getUserByUserNameAndPassword(string username, string password)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@Username", username, DbType.AnsiString);
+            parameters.Add("@Password", password, DbType.AnsiString);
+            return SqlMapper.Query<User>(connection, SQL_GET_USER_BY_USERNAME_AND_PASSWORD, parameters).FirstOrDefault();
         }
 
         public bool DeleteUserByID(int id)

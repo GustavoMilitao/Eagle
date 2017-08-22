@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EagleAPI.Controllers;
+using EagleEntities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,8 @@ namespace EagleUI.Interface.Controllers
 {
     public class LoginController : Controller
     {
+        UsersController usersController = new UsersController();
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -19,18 +23,26 @@ namespace EagleUI.Interface.Controllers
         {
             try
             {
-                return Json(new { success = true, sessionID = Guid.NewGuid().ToString(), days = 9999 });
+                var json = usersController.Get(user, senha);
+                if (json.Content != null)
+                {
+                    var guid = Guid.NewGuid().ToString();
+                    Session[guid] = json.Content;
+                    var qtdDays = keepLogged ? 9999 : 0;
+                    return Json(new { success = true, sessionID = guid, days = qtdDays });
+                }
+                return Json(new { success = false, message = "Usuário ou senha inválidos." });
             }
-            catch
+            catch (Exception ex)
             {
-                return Json(new { success = false, message = "Errado" });
+                return Json(new { success = false, message = ex.Message });
             }
         }
 
-        [HttpPost]
         [Route("Recover")]
         public ActionResult Recover(string sessionID)
         {
+            User user = (User)Session[sessionID];
             ViewBag.Message = "Your application description page.";
 
             return View();

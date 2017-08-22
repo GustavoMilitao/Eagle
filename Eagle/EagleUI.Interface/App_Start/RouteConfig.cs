@@ -13,11 +13,12 @@ namespace EagleUI.Interface
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{id}",
-                defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
-            );
+                 name: "Default",
+                 url: "{controller}/{id}",
+                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
+             );
 
             routes.MapRoute(
                 name: "Recover",

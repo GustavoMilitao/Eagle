@@ -37,6 +37,11 @@ namespace EagleBLL
             return UserDAL.getUserByID(id);
         }
 
+        public User getUserByUserNameAndPassword(string username, string password)
+        {
+            return UserDAL.getUserByUserNameAndPassword(username, password);
+        }
+
         public bool DeleteUserByID(int id)
         {
             return UserDAL.DeleteUserByID(id);
